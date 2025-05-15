@@ -26,7 +26,7 @@ export default function Navbar() {
     return (
         <nav className="fixed w-full z-20 top-0 left-0">
             {/* Main Navbar */}
-            <div className={`flex justify-between items-center px-6 py-3 bg-white/20 backdrop-blur-lg border border-white/30 rounded-full shadow-xl mt-5 mx-4 sm:mx-8 md:mx-auto max-w-2xl md:max-w-4xl text-white ${classes["glass-navbar"]}`}>
+            <div className={`flex justify-between items-center px-6 py-3 bg-white/20 border border-white/30 rounded-full shadow-xl mt-5 mx-4 sm:mx-8 md:mx-auto max-w-2xl md:max-w-4xl text-white `}>
                 {/* Logo */}
                 <div className="text-xl font-bold">
                     Logo
@@ -60,7 +60,7 @@ export default function Navbar() {
             {/* Mobile Menu - Vertical Expansion */}
             {isOpen && (
                 <div className={`md:hidden mx-4 sm:mx-8 mt-2 overflow-hidden ${isClosing ? classes["animate-slide-up"] : classes["animate-slide-down"]}`}>
-                    <div className={`p-6 flex flex-col bg-white/20 backdrop-blur-lg border border-white/30 rounded-2xl shadow-xl text-white ${classes["glass-navbar"]}`}>
+                    <div className={`p-6 flex flex-col bg-white/20 border border-white/30 rounded-2xl shadow-xl text-white`}>
                         <ul className="flex flex-col items-center space-y-4 w-full">
                             {navbarItems.map((item) => (
                                 <li key={item} className="w-full text-center py-3 rounded-lg text-lg font-semibold bg-transparent hover:bg-gradient-to-r hover:from-blue-500 hover:to-green-400 hover:text-white transition cursor-pointer">
