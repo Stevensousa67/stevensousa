@@ -1,13 +1,13 @@
 'use client';
 
 import React, { useState } from 'react';
+import classes from './navbar.module.css'
 
 const navbarItems = [
-    '',
-    'Services',
-    'Blog',
-    'Templates',
-    'About'
+    'About',
+    'Projects',
+    'Skills',
+    'Experience'
 ];
 
 export default function Navbar() {
@@ -16,18 +16,7 @@ export default function Navbar() {
     return (
         <nav className="fixed w-full z-20 top-0 left-0">
             {/* Main Navbar */}
-            <div className={`
-  flex justify-between items-center px-6 py-3
-  bg-white/20
-  backdrop-blur-lg
-  border border-white/30
-  rounded-full
-  shadow-xl
-  mt-5 mx-4 sm:mx-8 md:mx-auto
-  max-w-2xl md:max-w-4xl
-  text-white
-  glass-navbar
-`}>
+            <div className={`flex justify-between items-center px-6 py-3 bg-white/20 backdrop-blur-lg border border-white/30 rounded-full shadow-xl mt-5 mx-4 sm:mx-8 md:mx-auto max-w-2xl md:max-w-4xl text-white ${classes["glass-navbar"]}`}>
                 {/* Logo */}
                 <div className="text-xl font-bold">
                     Logo
