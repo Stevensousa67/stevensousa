@@ -1,5 +1,4 @@
 'use client';
-
 import React, { useState } from 'react';
 import classes from './navbar.module.css'
 
@@ -63,7 +62,7 @@ export default function Navbar() {
                     <div className={`p-6 flex flex-col bg-white/20 border border-white/30 rounded-2xl shadow-xl text-white`}>
                         <ul className="flex flex-col items-center space-y-4 w-full">
                             {navbarItems.map((item) => (
-                                <li key={item} className="w-full text-center py-3 rounded-lg text-lg font-semibold bg-transparent hover:bg-gradient-to-r hover:from-blue-500 hover:to-green-400 hover:text-white transition cursor-pointer">
+                                <li key={item} className="w-full text-center py-3 rounded-lg text-lg font-semibold bg-transparent hover:text-green-400 transition cursor-pointer">
                                     {item}
                                 </li>
                             ))}
