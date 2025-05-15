@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 
 const navbarItems = [
-    'Work',
+    '',
     'Services',
     'Blog',
     'Templates',
@@ -17,11 +17,17 @@ export default function Navbar() {
         <nav className="fixed w-full z-20 top-0 left-0">
             {/* Main Navbar */}
             <div className={`
-            flex justify-between items-center px-6 py-3 
-            bg-white bg-opacity-5 backdrop-blur-lg border 
-            border-white border-opacity-20 rounded-full 
-            shadow-xl mt-5 mx-4 sm:mx-8 md:mx-auto 
-            max-w-2xl md:max-w-4xl text-black-100`}>
+  flex justify-between items-center px-6 py-3
+  bg-white/20
+  backdrop-blur-lg
+  border border-white/30
+  rounded-full
+  shadow-xl
+  mt-5 mx-4 sm:mx-8 md:mx-auto
+  max-w-2xl md:max-w-4xl
+  text-white
+  glass-navbar
+`}>
                 {/* Logo */}
                 <div className="text-xl font-bold">
                     Logo
@@ -38,7 +44,7 @@ export default function Navbar() {
                 <button className="hidden md:block bg-gradient-to-r from-blue-500 to-green-400 py-1 px-6 rounded-3xl shadow-2xl text-white font-semibold hover:from-blue-600 hover:to-green-500">
                     Contact
                 </button>
-                {/* Hamburger with optional margin */}
+                {/* Hamburger */}
                 <button
                     className="md:hidden text-white"
                     onClick={() => setIsOpen(true)}
@@ -49,6 +55,7 @@ export default function Navbar() {
                     </svg>
                 </button>
             </div>
+
 
             {/* Mobile Modal */}
             {isOpen && (
