@@ -1,4 +1,4 @@
-const navbarItems = ['About','Projects','Skills','Experience','Contact'];
+const navbarItems = ['About','Projects','Skills','Contact'];
 
 export default function NavbarLinks({className}: {className?: string}) {
     return (

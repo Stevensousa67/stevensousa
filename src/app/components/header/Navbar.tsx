@@ -4,8 +4,8 @@ import Link from 'next/link';
 import NavbarLinks from './NavbarLinks';
 import classes from './navbar.module.css';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { ModeToggle } from '@/components/ui/mode-toggle';
-import { Toggle } from '@/components/ui/toggle';
+import { ModeToggle } from '@/components/ui/modeToggle';
+import { Separator } from '@/components/ui/separator';
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
@@ -31,8 +31,7 @@ export default function Navbar() {
                             </Avatar>
                         </Link>
                         <NavbarLinks className="hidden md:flex gap-8 text-lg" />
-                        <div className="border-l h-6 mx-4 border-black dark:border-white" aria-hidden="true"></div>
-
+                        <Separator orientation="vertical" className="ml-4 mr-4"/>
                         <ModeToggle />
                         <button className="md:hidden text-black ml-auto" onClick={() => (isOpen ? closeMenu() : setIsOpen(true))} aria-label={isOpen ? 'Close menu' : 'Open menu'} aria-expanded={isOpen}>
                             {isOpen ? (
