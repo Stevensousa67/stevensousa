@@ -97,7 +97,7 @@ export function ContactForm() {
             />
           </div>
           {/* Submit Button: Full width */}
-          <Button type="submit" className="w-full">
+          <Button type="submit" className="w-3xs">
             Send
           </Button>
         </form>
