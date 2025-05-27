@@ -7,6 +7,9 @@ import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from "
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
+import { Toaster } from "@/components/ui/sonner";
+import { toast } from "sonner"
+
 
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters long"),
@@ -16,12 +19,8 @@ const formSchema = z.object({
 
 export function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<{
-    type: 'success' | 'error' | null;
-    message: string;
-  }>({ type: null, message: '' });
 
-  // 1. Define the form schema using Zod
+  // Define the form schema using Zod
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -31,10 +30,9 @@ export function ContactForm() {
     },
   });
 
-  // 2. Handle form submission
+  // Handle form submission
   async function onSubmit(data: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
-    setSubmitStatus({ type: null, message: '' });
 
     try {
       const response = await fetch('/api/email', {
@@ -48,22 +46,22 @@ export function ContactForm() {
       const result = await response.json();
 
       if (response.ok) {
-        setSubmitStatus({
-          type: 'success',
-          message: 'Message sent successfully! I\'ll get back to you soon.',
+        toast('Message sent successfully! I\'ll get back to you soon.', {
+          position: 'bottom-right',
+          duration: 5000,
         });
-        form.reset(); // Clear the form
+        form.reset();
       } else {
-        setSubmitStatus({
-          type: 'error',
-          message: result.error || 'Failed to send message. Please try again.',
+        toast(result.error || 'Failed to send message. Please try again.', {
+          position: 'bottom-right',
+          duration: 5000,
         });
       }
     } catch (error) {
       console.error('Form submission error:', error);
-      setSubmitStatus({
-        type: 'error',
-        message: 'Network error. Please check your connection and try again.',
+      toast('Network error. Please check your connection and try again.', {
+        position: 'top-right',
+        duration: 5000,
       });
     } finally {
       setIsSubmitting(false);
@@ -131,29 +129,17 @@ export function ContactForm() {
             />
           </div>
 
-          {/* Status Messages */}
-          {submitStatus.type && (
-            <div
-              className={`p-4 rounded-md ${
-                submitStatus.type === 'success'
-                  ? 'bg-green-50 text-green-800 border border-green-200'
-                  : 'bg-red-50 text-red-800 border border-red-200'
-              }`}
-            >
-              {submitStatus.message}
-            </div>
-          )}
-
           {/* Submit Button: Full width */}
-          <Button 
-            type="submit" 
-            className="w-full" 
+          <Button
+            type="submit"
+            className="w-full"
             disabled={isSubmitting}
           >
             {isSubmitting ? 'Sending...' : 'Send'}
           </Button>
         </form>
       </Form>
+      <Toaster />
     </div>
   );
 }
