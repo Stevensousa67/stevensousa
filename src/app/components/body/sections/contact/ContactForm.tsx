@@ -129,10 +129,10 @@ export function ContactForm() {
             />
           </div>
 
-          {/* Submit Button: Full width */}
+          {/* Submit Button */}
           <Button
             type="submit"
-            className="w-full"
+            className="w-1/4"
             disabled={isSubmitting}
           >
             {isSubmitting ? 'Sending...' : 'Send'}
