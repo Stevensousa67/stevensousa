@@ -122,9 +122,3 @@
     @apply bg-background text-foreground;
   }
 }
-
-/* body {
-  background-image: url('../assets/Background.jpg');
-  background-size: cover;
-  height: 100vh;
-} */
