@@ -1,10 +1,29 @@
-import React from 'react'
+import React from 'react';
+import WordRotator from './WordRotator';
+import { getCurrentUtcOffset } from './getTimeZone';
 
 export default function About() {
+    const timeOffset = getCurrentUtcOffset();
     return (
-        <section className="py-80 flex flex-col items-center text-center gap-8">
-            <h1 className="text-4xl font-bold">I'm Steven Sousa - a Full Stack Software Engineer</h1>
-            <p className="text-2xl text-primary">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel magnam, illum consectetur modi ut minus id incidunt aut, dolorem exercitationem minima iusto soluta harum quis ratione sunt est ad fugiat. </p>
+        <section>
+            <div className="my-40">
+                <div className="flex justify-between gap-8">
+                    <div className="flex flex-col gap-4">
+                        <h1 className="flex flex-col flex-wrap gap-2 text-xl font-bold sm:text-3xl">
+                            <div className="opacity-100 transform-none">I&apos;m Steven Sousa, a Full Stack Engineer</div>
+                            <div className="flex gap-2 opacity-100 transform-none">
+                                <div className="leading-0.3 sm:leading-0.45">building</div>
+                                <div className="inline-block min-w-[120px] sm:min-w-[150px] transition-all duration-300 ease-in-out">
+                                    <WordRotator />
+                                </div>
+                                <div className="leading-0.3 sm:leading-0.45">websites using</div>
+                            </div>
+                            <div className="opacity-100 transform-none">React</div>
+                        </h1>
+                        <div className="text-muted-foreground text-sm">Plymouth, MA, USA • UTC/GMT {timeOffset}</div>
+                    </div>
+                </div>
+            </div>
         </section>
-    )
+    );
 }
