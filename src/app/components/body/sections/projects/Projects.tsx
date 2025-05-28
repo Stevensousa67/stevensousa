@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Projects() {
   return (
-    <section className="fpy-32 flex flex-col items-center text-center gap-8">
+    <section className="py-16 flex flex-col items-center text-center gap-8">
       <h1 className="text-4xl font-bold">Projects</h1>
       <p className="text-2xl text-primary">Here are some of my projects</p>
       <div className="flex flex-wrap gap-8 justify-center">
