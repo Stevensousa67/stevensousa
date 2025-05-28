@@ -26,7 +26,7 @@ const WordRotator = () => {
     }, []);
 
     return (
-        <div className="flex justify-center items-center">
+        <div className="inline-block w-23 sm:w-36">
             <AnimatePresence mode="wait">
                 <motion.div
                     key={currentWord}
@@ -34,7 +34,7 @@ const WordRotator = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.4 }}
-                    className={`text-xl sm:text-3xl font-bold bg-gradient-to-r ${words[currentWord].from} ${words[currentWord].to} bg-clip-text text-transparent`}
+                    className={`text-xl sm:text-3xl font-bold bg-gradient-to-r ${words[currentWord].from} ${words[currentWord].to} bg-clip-text text-transparent text-center`}
                 >
                     {words[currentWord].text}
                 </motion.div>
