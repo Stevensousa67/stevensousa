@@ -38,7 +38,7 @@ export default function Projects() {
       {/* Carousel for smaller screens only */}
       <div className="w-full max-w-4xl px-4 lg:hidden">
         <Carousel opts={{ align: "start", loop: true }} className="w-full">
-          <CarouselContent className="-ml-2 md:-ml-4">
+          <CarouselContent className="-ml-2 md:-ml-4 pt-2">
             {projects.map((project) => (
               <CarouselItem key={project.name} className="pl-2 md:pl-4 basis-full md:basis-1/2">
                 <Card className="max-w-72 mx-auto transform transition duration-300 ease-in-out hover:opacity-90 hover:-translate-y-1 hover:shadow-lg hover:border-blue-500">
