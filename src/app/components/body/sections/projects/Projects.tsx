@@ -13,7 +13,7 @@ export default function Projects() {
       {/* Grid layout when screen can fit all 3 cards */}
       <div className="hidden lg:flex flex-wrap gap-8 justify-center">
         {projects.map((project) => (
-          <Card key={project.name} className="w-80 transform transition duration-300 ease-in-out hover:opacity-90 hover:-translate-y-1 hover:shadow-lg hover:border-blue-500">
+          <Card key={project.name} className="w-80 transform transition duration-300 ease-in-out hover:-translate-y-1 hover:shadow-lg hover:border-blue-500">
             <CardHeader>
               <CardTitle>{project.name}</CardTitle>
               <CardDescription>{project.status}</CardDescription>
@@ -41,7 +41,7 @@ export default function Projects() {
           <CarouselContent className="-ml-2 md:-ml-4 pt-2">
             {projects.map((project) => (
               <CarouselItem key={project.name} className="pl-2 md:pl-4 basis-full md:basis-1/2">
-                <Card className="max-w-72 mx-auto transform transition duration-300 ease-in-out hover:opacity-90 hover:-translate-y-1 hover:shadow-lg hover:border-blue-500">
+                <Card className="max-w-72 mx-auto transform transition duration-300 ease-in-out hover:-translate-y-1 hover:shadow-lg hover:border-blue-500">
                   <CardHeader>
                     <CardTitle>{project.name}</CardTitle>
                     <CardDescription>{project.status}</CardDescription>
