@@ -130,11 +130,7 @@ export function ContactForm() {
           </div>
 
           {/* Submit Button */}
-          <Button
-            type="submit"
-            className="w-1/4"
-            disabled={isSubmitting}
-          >
+          <Button type="submit" className="w-1/4 hover:underline" disabled={isSubmitting} >
             {isSubmitting ? 'Sending...' : 'Send'}
           </Button>
         </form>
