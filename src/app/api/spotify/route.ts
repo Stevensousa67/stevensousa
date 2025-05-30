@@ -29,13 +29,110 @@ async function refreshAccessToken(): Promise<string> {
       throw new Error("Invalid access token received");
     }
 
-    accessToken = data.access_token;
+    const token = data.access_token;
+    accessToken = token;
     tokenExpiration = Date.now() + (data.expires_in - 300) * 1000;
-    return accessToken;
+    return token;
   } catch (error: unknown) {
     console.error("Token refresh error:", error);
     throw error;
   }
+}
+
+async function fetchPlaybackState(): Promise<Response> {
+  if (!accessToken) {
+    throw new Error("No access token available");
+  }
+
+  return fetch(
+    "https://api.spotify.com/v1/me/player?additional_types=track,episode",
+    {
+      headers: { Authorization: `Bearer ${accessToken}` },
+    }
+  );
+}
+
+async function fetchCurrentlyPlaying(): Promise<Response> {
+  if (!accessToken) {
+    throw new Error("No access token available");
+  }
+
+  return fetch(
+    "https://api.spotify.com/v1/me/player/currently-playing?additional_types=track,episode",
+    {
+      headers: { Authorization: `Bearer ${accessToken}` },
+    }
+  );
+}
+
+function processPlaybackData(playbackData: any) {
+  const isListening = playbackData.is_playing;
+  if (!isListening) {
+    return {
+      isListening: false,
+      message: "Not listening - playback paused",
+    };
+  }
+
+  // Check if we have item data
+  if (playbackData.item) {
+    const itemType = playbackData.item.type;
+    const isTrack = itemType === "track";
+    const isEpisode = itemType === "episode";
+
+    if (!isTrack && !isEpisode) {
+      return {
+        isListening: false,
+        message: `Unsupported media type: ${itemType}`,
+      };
+    }
+
+    if (isEpisode) {
+      const episodeName = playbackData.item.name || "Unknown Episode";
+      const podcastName = playbackData.item.show?.name || "Unknown Podcast";
+
+      return {
+        isListening: true,
+        trackName: episodeName,
+        artistName: podcastName,
+        itemType: "episode",
+      };
+    }
+
+    // For tracks
+    return {
+      isListening,
+      trackName: playbackData.item.name,
+      artistName: playbackData.item.artists?.[0]?.name || "Unknown Artist",
+      itemType: "track",
+    };
+  }
+
+  // Handle case where item is null but we know the type
+  if (playbackData.currently_playing_type) {
+    if (playbackData.currently_playing_type === "episode") {
+      return {
+        isListening: true,
+        trackName: "Unknown Episode",
+        artistName: "Unknown Podcast",
+        itemType: "episode",
+      };
+    }
+
+    if (playbackData.currently_playing_type === "track") {
+      return {
+        isListening: true,
+        trackName: "Unknown Track",
+        artistName: "Unknown Artist",
+        itemType: "track",
+      };
+    }
+  }
+
+  return {
+    isListening: false,
+    message: "Not listening - no content data",
+  };
 }
 
 export async function GET() {
@@ -45,13 +142,9 @@ export async function GET() {
       await refreshAccessToken();
     }
 
-    const playbackResponse = await fetch(
-      "https://api.spotify.com/v1/me/player",
-      {
-        headers: { Authorization: `Bearer ${accessToken}` },
-      }
-    );
+    let playbackResponse = await fetchPlaybackState();
 
+    // Handle no active device
     if (playbackResponse.status === 204) {
       return NextResponse.json({
         isListening: false,
@@ -59,77 +152,45 @@ export async function GET() {
       });
     }
 
-    if (!playbackResponse.ok) {
-      // If unauthorized (401), try refreshing token once
-      if (playbackResponse.status === 401) {
-        await refreshAccessToken();
-        const retryResponse = await fetch(
-          "https://api.spotify.com/v1/me/player",
-          {
-            headers: { Authorization: `Bearer ${accessToken}` },
-          }
-        );
-        if (retryResponse.status === 204) {
-          return NextResponse.json({
-            isListening: false,
-            message: "Not listening",
-          });
-        }
-        if (!retryResponse.ok) {
-          throw new Error("Failed to fetch playback state after token refresh");
-        }
-        const retryData = await retryResponse.json();
-        const isListening = retryData.is_playing;
-        if (!isListening || !retryData.item) {
-          return NextResponse.json({
-            isListening: false,
-            message: "Not listening",
-          });
-        }
-        const isTrack = retryData.item.type === "track";
-        const isEpisode = retryData.item.type === "episode";
-        if (!isTrack && !isEpisode) {
-          return NextResponse.json({
-            isListening: false,
-            message: "Unsupported media type",
-          });
-        }
+    // Handle token expiration with retry
+    if (playbackResponse.status === 401) {
+      await refreshAccessToken();
+      playbackResponse = await fetchPlaybackState();
+
+      if (playbackResponse.status === 204) {
         return NextResponse.json({
-          isListening,
-          trackName: retryData.item.name,
-          artistName: isTrack
-            ? retryData.item.artists[0].name
-            : retryData.item.show.name,
+          isListening: false,
+          message: "Not listening",
         });
       }
-      throw new Error("Failed to fetch playback state");
+
+      if (!playbackResponse.ok) {
+        throw new Error("Failed to fetch playback state after token refresh");
+      }
+    } else if (!playbackResponse.ok) {
+      throw new Error(`Spotify API error: ${playbackResponse.status}`);
     }
 
-    const playbackData = await playbackResponse.json();
-    const isListening = playbackData.is_playing;
-    if (!isListening || !playbackData.item) {
-      return NextResponse.json({
-        isListening: false,
-        message: "Not listening",
-      });
+    let playbackData = await playbackResponse.json();
+
+    // If item is null but we're playing something, try the currently-playing endpoint
+    if (playbackData.is_playing && !playbackData.item) {
+      try {
+        const currentlyPlayingResponse = await fetchCurrentlyPlaying();
+        if (currentlyPlayingResponse.ok) {
+          const currentlyPlayingData = await currentlyPlayingResponse.json();
+          if (currentlyPlayingData.item) {
+            playbackData = currentlyPlayingData;
+          }
+        }
+      } catch (error) {
+        // Continue with original data if currently-playing fails
+      }
     }
 
-    const isTrack = playbackData.item.type === "track";
-    const isEpisode = playbackData.item.type === "episode";
-    if (!isTrack && !isEpisode) {
-      return NextResponse.json({
-        isListening: false,
-        message: "Unsupported media type",
-      });
-    }
+    const result = processPlaybackData(playbackData);
 
-    return NextResponse.json({
-      isListening,
-      trackName: playbackData.item.name,
-      artistName: isTrack
-        ? playbackData.item.artists[0].name
-        : playbackData.item.show.name,
-    });
+    return NextResponse.json(result);
   } catch (error: unknown) {
     console.error("Spotify API error:", error);
     return NextResponse.json(

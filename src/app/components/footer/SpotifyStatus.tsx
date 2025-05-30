@@ -7,6 +7,7 @@ interface SpotifyStatus {
   trackName?: string;
   artistName?: string;
   message?: string;
+  itemType?: string;
 }
 
 export default function SpotifyStatus() {
@@ -27,21 +28,23 @@ export default function SpotifyStatus() {
     return () => clearInterval(interval);
   }, []);
 
+  const formatNowPlaying = () => {
+    if (!status.isListening) {
+      return status.message || 'Not listening to Spotify';
+    }
+
+    if (status.itemType === 'episode') {
+      return `Now Playing: ${status.trackName} from ${status.artistName}`;
+    } else {
+      return `Now Playing: ${status.trackName} by ${status.artistName}`;
+    }
+  };
+
   return (
     <>
       <AnimatePresence mode="wait">
-        <motion.p
-          key={`${status.isListening}-${status.trackName}`}
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -10 }}
-          transition={{ duration: 0.3 }}
-        >
-          {status.isListening ? (
-            `Now Playing: ${status.trackName} by ${status.artistName}`
-          ) : (
-            status.message || 'Not listening to Spotify'
-          )}
+        <motion.p key={`${status.isListening}-${status.trackName}`} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.3 }}>
+          {formatNowPlaying()}
         </motion.p>
       </AnimatePresence>
     </>
