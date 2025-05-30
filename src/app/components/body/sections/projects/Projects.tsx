@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
@@ -7,7 +8,7 @@ import { projects } from './projectsList';
 
 export default function Projects() {
   return (
-    <section className="flex flex-col items-center text-center gap-8">
+    <section className="mt-30 flex flex-col items-center text-center gap-8">
       <h1 className="text-3xl font-semibold">Featured Projects</h1>
       
       {/* Grid layout when screen can fit all 3 cards */}
@@ -67,8 +68,12 @@ export default function Projects() {
           <CarouselNext className="right-2 md:right-2" />
         </Carousel>
       </div>
-      <p className="text-lg text-gray-500">More projects coming soon!</p>
-      <a href="/projects" className="text-lg text-blue-500 hover:underline">View all projects</a>
+      {/* Button to all projects page */}
+      <Button asChild className="mt-4 hover:underline"> 
+        <Link href="/projects">
+          View all projects
+        </Link>
+      </Button>
     </section>
   );
 }
