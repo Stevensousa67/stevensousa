@@ -65,7 +65,18 @@ async function fetchCurrentlyPlaying(): Promise<Response> {
   );
 }
 
-function processPlaybackData(playbackData: any) {
+interface SpotifyPlaybackData {
+  is_playing: boolean;
+  item?: {
+    type: string;
+    name: string;
+    artists?: Array<{ name: string }>;
+    show?: { name: string };
+  } | null;
+  currently_playing_type?: string;
+}
+
+function processPlaybackData(playbackData: SpotifyPlaybackData) {
   const isListening = playbackData.is_playing;
   if (!isListening) {
     return {
@@ -183,7 +194,7 @@ export async function GET() {
             playbackData = currentlyPlayingData;
           }
         }
-      } catch (error) {
+      } catch {
         // Continue with original data if currently-playing fails
       }
     }
