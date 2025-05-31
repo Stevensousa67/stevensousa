@@ -43,7 +43,7 @@ export default function SpotifyStatus() {
   return (
     <>
       <AnimatePresence mode="wait">
-        <motion.p key={`${status.isListening}-${status.trackName}`} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.3 }}>
+        <motion.p key={`${status.isListening}-${status.trackName}`} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.3 }} className="">
           {formatNowPlaying()}
         </motion.p>
       </AnimatePresence>

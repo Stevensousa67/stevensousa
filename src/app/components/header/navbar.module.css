@@ -14,7 +14,7 @@
   }
   to {
     transform: translateY(0);
-    max-height: 500px;
+    max-height: 600px;
     opacity: 1; 
   }
 }
@@ -23,7 +23,7 @@
   from {
     opacity: 1;
     transform: translateY(0);
-    max-height: 500px;
+    max-height: 600px;
   }
   to {
     opacity: 0;
@@ -32,7 +32,7 @@
   }
 }
 
-.backdrop-blur {
+/* .backdrop-blur {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-}
+} */

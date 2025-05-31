@@ -33,7 +33,7 @@ export default function Navbar() {
 
                         {/* Right side - Links and Controls */}
                         <div className="flex items-center gap-4">
-                            <NavbarLinks className="hidden md:flex gap-8 text-lg" />
+                            <NavbarLinks className="hidden md:flex gap-8 text-md" />
                             <div className="hidden md:block h-6 w-px bg-gray-400/50 flex-shrink-0" />
                             <ModeToggle />
                             <button 
@@ -59,7 +59,7 @@ export default function Navbar() {
                 {/* Mobile Menu - Vertical Expansion */}
                 {isOpen && (
                     <div className={`md:hidden px-4 mt-2 overflow-hidden ${isClosing ? classes['animate-slide-up'] : classes['animate-slide-down']}`}>
-                        <div className="py-2 px-4 flex flex-col bg-white/20 border border-white/30 rounded-2xl shadow-xl w-full">
+                        <div className="py-1 flex flex-col bg-background border  rounded-2xl shadow-xl w-full">
                             <NavbarLinks className="flex flex-col items-center space-y-4 w-full" />
                         </div>
                     </div>
