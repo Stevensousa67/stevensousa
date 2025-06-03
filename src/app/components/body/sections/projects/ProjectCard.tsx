@@ -26,7 +26,13 @@ export default function ProjectCard({ project, imageSize = { width: 420, height:
 
     const ProjectImage = ({ className: imageClassName = "" }: { className?: string }) => (
         <AspectRatio ratio={9 / 6}>
-            <Image src={project.image} alt={project.name} width={imageSize.width} height={imageSize.height} className={`rounded-lg h-full w-full object-cover ${imageClassName}`} />
+            <Image
+                src={project.image}
+                alt={project.name}
+                width={imageSize.width}
+                height={imageSize.height}
+                className={`rounded-lg h-full w-full object-cover ${imageClassName}`}
+            />
         </AspectRatio>
     );
 
@@ -54,15 +60,25 @@ export default function ProjectCard({ project, imageSize = { width: 420, height:
                     <DrawerTrigger asChild>
                         <ProjectImage className="cursor-pointer" />
                     </DrawerTrigger>
-                    <DrawerContent>
-                        <div className="p-4 max-w-md mx-auto">
-                            <DrawerTitle className="text-lg font-semibold mb-4">{project.name}</DrawerTitle>
-                            <ProjectImage />
-                            <div className="max-h-60 overflow-y-auto mt-4">
-                                <p className="mt-4 text-muted-foreground">{project.techStack}</p>
-                                <p className="mt-4 text-muted-foreground">{project.techDetails}</p>
+                    <DrawerContent className="max-h-[100vh] overflow-hidden">
+                        <div className="p-4 max-w-5xl mx-auto flex flex-col min-h-0">
+                            {/* Title Above Image on Mobile */}
+                            <DrawerTitle className="text-xl font-semibold mb-4 md:hidden">{project.name}</DrawerTitle>
+                            <div className="min-h-0 overflow-y-auto">
+                                <div className="flex flex-col md:flex-row gap-4 md:gap-8 items-start">
+                                    {/* Left Side - Image and Tech Stack */}
+                                    <div className="w-full md:basis-1/3 md:max-w-md md:order-1">
+                                        <ProjectImage />
+                                        <p className="mt-4 text-muted-foreground">{project.techStack}</p>
+                                    </div>
+                                    {/* Right Side - Title and Details */}
+                                    <div className="w-full md:basis-2/3 md:order-2">
+                                        <DrawerTitle className="text-xl font-semibold mb-4 hidden md:block">{project.name}</DrawerTitle>
+                                        <p>{project.techDetails}</p>
+                                    </div>
+                                </div>
                             </div>
-                            <div className="flex gap-2 justify-center mt-6">
+                            <div className="flex flex-col sm:flex-row gap-2 justify-center md:justify-end mt-4 sticky bottom-0 bg-white p-4">
                                 <ProjectButton>{isLive ? "Open Project" : "Coming Soon"}</ProjectButton>
                                 <DrawerClose asChild>
                                     <Button variant="outline">Close</Button>
@@ -74,7 +90,7 @@ export default function ProjectCard({ project, imageSize = { width: 420, height:
             </CardContent>
             <CardFooter className="flex flex-col items-center">
                 <CardDescription className="text-center">{project.description}</CardDescription>
-                <ProjectButton className="mt-4">View Project</ProjectButton>
+                <ProjectButton className="mt-4">Open Project</ProjectButton>
             </CardFooter>
         </Card>
     );
