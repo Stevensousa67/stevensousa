@@ -1,10 +1,12 @@
 import React from 'react';
-import Image from 'next/image';
 import WordRotator from './WordRotator';
 import { getCurrentUtcOffset } from './getTimeZone';
+import PictureAndSkeleton from './Picture&Skeleton';
+
 
 export default function About() {
     const timeOffset = getCurrentUtcOffset();
+
     return (
         <section>
             <div className="mt-40 ml-4 mr-4">
@@ -24,9 +26,7 @@ export default function About() {
                         <div className="text-muted-foreground text-sm">Plymouth, MA, USA • UTC/GMT {timeOffset}</div>
                     </div>
                     <div className="relative hidden size-40 sm:block transform-none">
-                        <div className="overflow-hidden rounded-full w-40 h-40">
-                            <Image src="/Steven Sousa.jpeg" alt="Steven Sousa" width={160} height={160} className="rounded-full object-cover" />
-                        </div>
+                        <PictureAndSkeleton />
                     </div>
                 </div>
             </div>

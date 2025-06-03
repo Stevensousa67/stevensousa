@@ -7,6 +7,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { ModeToggle } from '@/components/ui/modeToggle';
 
 export default function Navbar() {
+    const baseUrl = process.env.NEXT_PUBLIC_AWS_S3_BASE_URL;
     const [isOpen, setIsOpen] = useState(false);
     const [isClosing, setIsClosing] = useState(false);
 
@@ -26,7 +27,7 @@ export default function Navbar() {
                         {/* Left side - Avatar */}
                         <Link href='/' className="inline-block">
                             <Avatar>
-                                <AvatarImage src='/Logo.jpeg'/>
+                                <AvatarImage src={`${baseUrl}Logo.jpeg`}/>
                                 <AvatarFallback>Logo</AvatarFallback>
                             </Avatar>
                         </Link>
