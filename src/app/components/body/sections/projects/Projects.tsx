@@ -13,7 +13,7 @@ export default function Projects() {
       {/* Grid layout when screen can fit all 3 cards */}
       <div className="hidden lg:flex flex-wrap gap-8 justify-center">
         {projects.map((project) => (
-          <ProjectCard key={project.name} project={project} className="w-80"/>
+          <ProjectCard key={project.name} project={project} className="w-80" />
         ))}
       </div>
 
@@ -25,7 +25,7 @@ export default function Projects() {
           <CarouselContent className="-ml-2 md:-ml-4 pt-2">
             {projects.map((project) => (
               <CarouselItem key={project.name} className="pl-2 md:pl-4 basis-full md:basis-1/2">
-                <ProjectCard project={project} imageSize={{ width: 420, height: 420 }} className="max-w-72 mx-auto"/>
+                <ProjectCard project={project} imageSize={{ width: 420, height: 420 }} className="max-w-72 mx-auto" />
               </CarouselItem>
             ))}
           </CarouselContent>
