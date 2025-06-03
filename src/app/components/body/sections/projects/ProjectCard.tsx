@@ -78,7 +78,7 @@ export default function ProjectCard({ project, imageSize = { width: 420, height:
                                     </div>
                                 </div>
                             </div>
-                            <div className="flex flex-col sm:flex-row gap-2 justify-center md:justify-end mt-4 sticky bottom-0 bg-white p-4">
+                            <div className="flex flex-col sm:flex-row gap-2 justify-center md:justify-end mt-2 sticky bottom-0 p-4">
                                 <ProjectButton>{isLive ? "Open Project" : "Coming Soon"}</ProjectButton>
                                 <DrawerClose asChild>
                                     <Button variant="outline">Close</Button>
