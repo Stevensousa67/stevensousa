@@ -26,13 +26,7 @@ export default function ProjectCard({ project, imageSize = { width: 420, height:
 
     const ProjectImage = ({ className: imageClassName = "" }: { className?: string }) => (
         <AspectRatio ratio={9 / 6}>
-            <Image
-                src={project.image}
-                alt={project.name}
-                width={imageSize.width}
-                height={imageSize.height}
-                className={`rounded-lg h-full w-full object-cover ${imageClassName}`}
-            />
+            <Image src={project.image} alt={project.name} width={imageSize.width} height={imageSize.height} className={`rounded-lg h-full w-full object-cover ${imageClassName}`} />
         </AspectRatio>
     );
 
