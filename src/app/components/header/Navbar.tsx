@@ -3,13 +3,16 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import NavbarLinks from './NavbarLinks';
 import classes from './navbar.module.css';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Avatar, AvatarImage } from '@/components/ui/avatar';
+import { Skeleton } from '@/components/ui/skeleton';
 import { ModeToggle } from '@/components/ui/modeToggle';
 
 export default function Navbar() {
     const baseUrl = process.env.NEXT_PUBLIC_AWS_S3_BASE_URL;
+    const imageSrc = `${baseUrl}Logo.jpeg`;
     const [isOpen, setIsOpen] = useState(false);
     const [isClosing, setIsClosing] = useState(false);
+    const [isImageLoaded, setIsImageLoaded] = useState(false);
 
     const closeMenu = () => {
         setIsClosing(true);
@@ -24,12 +27,14 @@ export default function Navbar() {
             <nav className="fixed w-full z-20 top-0 left-0" role="navigation">
                 <div className="flex justify-center px-4 md:px-0">
                     <div className="flex items-center justify-between px-6 py-3 bg-white/20 border border-white/30 rounded-full shadow-xl mt-5 backdrop-blur-lg transition-all w-full max-w-5xl">
-                        {/* Left side - Avatar */}
-                        <Link href='/' className="inline-block">
-                            <Avatar>
-                                <AvatarImage src={`${baseUrl}Logo.jpeg`}/>
-                                <AvatarFallback>Logo</AvatarFallback>
-                            </Avatar>
+                        {/* Left side - Avatar with Skeleton */}
+                        <Link href="/" className="inline-block">
+                            <div className="relative w-10 h-10">
+                                {!isImageLoaded && (<Skeleton className="w-10 h-10 rounded-full absolute inset-0 z-0" />)}
+                                <Avatar className="relative z-10">
+                                    <AvatarImage src={imageSrc} onLoad={() => setIsImageLoaded(true)} className={`transition-opacity duration-500 ease-in-out ${!isImageLoaded ? 'opacity-0' : 'opacity-100'}`}/>
+                                </Avatar>
+                            </div>
                         </Link>
 
                         {/* Right side - Links and Controls */}
@@ -37,10 +42,10 @@ export default function Navbar() {
                             <NavbarLinks className="hidden md:flex gap-8 text-md" />
                             <div className="hidden md:block h-6 w-px bg-gray-400/50 flex-shrink-0" />
                             <ModeToggle />
-                            <button 
-                                className="md:hidden text-black" 
-                                onClick={() => (isOpen ? closeMenu() : setIsOpen(true))} 
-                                aria-label={isOpen ? 'Close menu' : 'Open menu'} 
+                            <button
+                                className="md:hidden text-black"
+                                onClick={() => (isOpen ? closeMenu() : setIsOpen(true))}
+                                aria-label={isOpen ? 'Close menu' : 'Open menu'}
                                 aria-expanded={isOpen}
                             >
                                 {isOpen ? (
@@ -60,7 +65,7 @@ export default function Navbar() {
                 {/* Mobile Menu - Vertical Expansion */}
                 {isOpen && (
                     <div className={`md:hidden px-4 mt-2 overflow-hidden ${isClosing ? classes['animate-slide-up'] : classes['animate-slide-down']}`}>
-                        <div className="py-1 flex flex-col bg-background border  rounded-2xl shadow-xl w-full">
+                        <div className="py-1 flex flex-col bg-background border rounded-2xl shadow-xl w-full">
                             <NavbarLinks className="flex flex-col items-center space-y-4 w-full" />
                         </div>
                     </div>
