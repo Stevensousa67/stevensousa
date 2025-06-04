@@ -31,7 +31,7 @@ export default function Navbar() {
                         <Link href="/" className="inline-block">
                             <div className="relative w-10 h-10">
                                 {!isImageLoaded && (<Skeleton className="w-10 h-10 rounded-full absolute inset-0 z-0" />)}
-                                <Avatar className="relative z-10">
+                                <Avatar className="relative z-10 w-10 h-10">
                                     <AvatarImage src={imageSrc} onLoad={() => setIsImageLoaded(true)} className={`transition-opacity duration-500 ease-in-out ${!isImageLoaded ? 'opacity-0' : 'opacity-100'}`}/>
                                 </Avatar>
                             </div>
