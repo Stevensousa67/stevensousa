@@ -27,7 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-y-scroll`}>
         <ThemeProvider attribute="class" defaultTheme="system">{children}</ThemeProvider>
         <SpeedInsights />
         <Analytics />
