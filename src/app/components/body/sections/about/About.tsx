@@ -9,7 +9,7 @@ export default function About() {
 
     return (
         <section>
-            <div className="mt-40 ml-4 mr-4">
+            <div className="mt-40 ml-2 mr-2">
                 <div className="flex justify-between gap-8">
                     <div className="flex flex-col gap-4">
                         <h1 className="flex flex-col flex-wrap gap-2 text-md font-bold sm:text-xl">

@@ -8,7 +8,7 @@ import Footer from "@/app/components/footer/Footer";
 export default function Home() {
   return (
     <>
-      <main className="max-w-5xl mx-auto ">
+      <main className="max-w-5xl mx-auto">
         <Navbar />
         <About />
         <Projects />
