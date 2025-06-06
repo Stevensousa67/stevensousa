@@ -11,7 +11,7 @@ export default function Projects() {
       <h1 className="text-3xl font-semibold">Featured Projects</h1>
 
     {/* Grid layout when screen can fit all 3 cards - now with consistent margins */}
-      <div className="hidden lg:flex flex-wrap gap-8 justify-center w-full">
+      <div className="hidden lg:flex flex-wrap gap-8 justify-center">
         {projects.map((project) => (
           <ProjectCard key={project.name} project={project} className="w-80 border border-foreground/30" />
         ))}

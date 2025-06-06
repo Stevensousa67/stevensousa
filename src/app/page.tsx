@@ -7,15 +7,17 @@ import Footer from "@/app/components/footer/Footer";
 
 export default function Home() {
   return (
-    <>
-      <main className="max-w-5xl mx-auto">
+    <div className="min-h-screen flex flex-col">
         <Navbar />
-        <About />
-        <Projects />
-        <Skills />
-        <Contact />
+      <main className="flex-grow flex flex-col max-w-5xl" style={{ position: 'relative', left: '50vw', transform: 'translateX(-50%)' }}>
+        <div className="flex-grow">
+          <About />
+          <Projects />
+          <Skills />
+          <Contact />
+        </div>
         <Footer />
       </main>
-    </>
+    </div>
   );
 }
