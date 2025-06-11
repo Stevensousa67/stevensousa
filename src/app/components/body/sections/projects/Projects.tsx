@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Button } from "@/components/ui/button";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { projects } from '@/lib/projectList';
+import { projects } from '@/lib/featuredProjects';
 import ProjectCard from './ProjectCard';
 
 export default function Projects() {
