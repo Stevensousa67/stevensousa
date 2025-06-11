@@ -1,9 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle, CardAction } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
-import { Drawer, DrawerTitle, DrawerClose, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
 
 interface Project {
     name: string;
@@ -42,28 +41,27 @@ export default function ProjectCard({ project, imageSize = { width: 420, height:
             <Button disabled className={buttonClassName}>Coming Soon</Button>
         );
     };
+
     return (
-        <>
-            <Card className={`flex flex-row w-full transform transition duration-300 ease-in-out hover:-translate-y-1 hover:shadow-lg hover:border-blue-500 ${className}`}>
-                <div className="w-1/3 flex-shrink-0">
-                    <CardHeader className="flex flex-col">
-                        <CardTitle>{project.name}</CardTitle>
-                        <CardDescription>{project.status}</CardDescription>
-                        <ProjectImage className="cursor-pointer" />
-                        <p className="mt-4 text-muted-foreground text-center">{project.techStack}</p>
-                    </CardHeader>
-                </div>
-                <div className="w-2/3 flex flex-col">
-                    <CardContent className="flex justify-center items-center flex-grow">
-                        <p>{project.techDetails}</p>
-                    </CardContent>
-                    <CardFooter className="justify-end ">
-                        <ProjectButton className="">
-                            {isLive ? "View Project" : "Coming Soon"}
-                        </ProjectButton>
-                    </CardFooter>
-                </div>
-            </Card>
-        </>
-    )
+        <Card className={`flex flex-row w-full transform transition duration-300 ease-in-out hover:-translate-y-1 hover:shadow-lg hover:border-blue-500 ${className}`}>
+            <div className="w-1/3 flex-shrink-0">
+                <CardHeader className="flex flex-col items-center">
+                    <CardTitle>{project.name}</CardTitle>  {/* Removed text-center */}
+                    <CardDescription>{project.status}</CardDescription>  {/* Removed text-center */}
+                    <ProjectImage className="cursor-pointer" />
+                    <p className="mt-4 text-muted-foreground text-center">{project.techStack}</p>
+                </CardHeader>
+            </div>
+            <div className="w-2/3 flex flex-col min-w-0">
+                <CardContent className="flex justify-center items-center flex-grow">
+                    <p>{project.techDetails}</p>
+                </CardContent>
+                <CardFooter className="justify-end">
+                    <ProjectButton>
+                        {isLive ? "View Project" : "Coming Soon"}
+                    </ProjectButton>
+                </CardFooter>
+            </div>
+        </Card>
+    );
 }
