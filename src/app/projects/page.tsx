@@ -2,7 +2,9 @@
 import Link from "next/link";
 import Navbar from "@/app/components/header/Navbar";
 import Footer from "@/app/components/footer/Footer";
+import ProjectCard from "./ProjectCard"
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb"
+import { projects } from "@/lib/allProjects";
 
 
 export default function ProjectsPage() {
@@ -27,7 +29,10 @@ export default function ProjectsPage() {
                             </BreadcrumbList>
                         </Breadcrumb>
                     </div>
-                    <p className="text-3xl font-semibold mt-4 text-center">All Projects</p>
+                    <p className="text-3xl font-semibold mt-4 mb-4 text-center">All Projects</p>
+                    {projects.map((project) => (
+                        <ProjectCard key={project.name} project={project} className="w-full mb-4 border border-foreground/30" />
+                    ))}
 
                 </main>
 
