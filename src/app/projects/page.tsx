@@ -30,8 +30,8 @@ export default function ProjectsPage() {
                         </Breadcrumb>
                     </div>
                     <p className="text-3xl font-semibold mt-4 mb-4 text-center">All Projects</p>
-                    {projects.map((project) => (
-                        <ProjectCard key={project.name} project={project} className="w-full mb-4 border border-foreground/30" />
+                    {projects.map((project, index) => (
+                        <ProjectCard key={project.name} project={project} isReversed={index % 2 === 1} className="w-full mb-4 border border-foreground/30" />
                     ))}
 
                 </main>
