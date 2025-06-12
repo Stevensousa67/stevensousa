@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
+import { Drawer, DrawerTitle, DrawerClose, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
 import { motion } from 'framer-motion';
 
 interface Project {
@@ -27,7 +28,7 @@ export default function ProjectCard({ project, imageSize = { width: 420, height:
 
     const ProjectImage = ({ className: imageClassName = "" }: { className?: string }) => (
         <AspectRatio ratio={9 / 6}>
-            <Image src={project.image} alt={project.name} width={imageSize.width} height={imageSize.height} className={`rounded-lg h-full w-full object-cover ${imageClassName}`}/>
+            <Image src={project.image} alt={project.name} width={imageSize.width} height={imageSize.height} className={`rounded-lg h-full w-full object-cover ${imageClassName}`} />
         </AspectRatio>
     );
 
@@ -61,43 +62,96 @@ export default function ProjectCard({ project, imageSize = { width: 420, height:
         },
     };
 
-    // Define the two sections
-    const imageSection = (
-        <motion.div className="w-1/3 flex-shrink-0" variants={childVariants}>
-            <CardHeader className="flex flex-col items-center">
-                <CardTitle>{project.name}</CardTitle>
-                <CardDescription>{project.status}</CardDescription>
-                <ProjectImage className="cursor-pointer" />
-                <p className="mt-4 text-muted-foreground text-center">{project.techStack}</p>
-            </CardHeader>
-        </motion.div>
-    );
-
-    const contentSection = (
-        <motion.div className="w-2/3 flex flex-col min-w-0" variants={childVariants}>
-            <CardContent className="flex justify-center items-center flex-grow">
-                <p>{project.techDetails}</p>
-            </CardContent>
-            <CardFooter className={isReversed ? "justify-start" : "justify-end"}>
-                <ProjectButton>{isLive ? "View Project" : "Coming Soon"}</ProjectButton>
-            </CardFooter>
-        </motion.div>
-    );
-
     return (
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.5 }} variants={cardVariants}>
-            <Card className={`flex flex-row w-full transform transition duration-300 ease-in-out hover:-translate-y-1 hover:shadow-lg hover:border-blue-500 ${className}`}>
-                {isReversed ? (
-                    <>
-                        {contentSection}
-                        {imageSection}
-                    </>
-                ) : (
-                    <>
-                        {imageSection}
-                        {contentSection}
-                    </>
-                )}
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.5 }} variants={cardVariants} className={`w-full ${className} flex justify-center`}
+        >
+            <Card className="transform transition duration-300 ease-in-out hover:-translate-y-1 hover:shadow-lg hover:border-blue-500 flex flex-col lg:flex-row w-80 lg:w-full">
+                {/* Mobile & Tablet Layout (Stacked Vertically) */}
+                <div className="flex flex-col items-center text-center p-4 lg:hidden">
+                    <CardHeader className="w-full">
+                        <CardTitle>{project.name}</CardTitle>
+                        <CardDescription>{project.status}</CardDescription>
+                    </CardHeader>
+                    <CardContent className="w-full flex flex-col items-center">
+                        <Drawer>
+                            <DrawerTrigger asChild>
+                                <div className="cursor-pointer w-full max-w-sm"> {/* Added max-w-sm for image on mobile */}
+                                    <ProjectImage />
+                                </div>
+                            </DrawerTrigger>
+                            <DrawerContent className="max-h-[100vh] overflow-hidden">
+                                <div className="p-4 max-w-5xl mx-auto flex flex-col min-h-0">
+                                    <DrawerTitle className="text-xl font-semibold mb-4 md:hidden">{project.name}</DrawerTitle>
+                                    <div className="min-h-0 overflow-y-auto">
+                                        <div className="flex flex-col md:flex-row gap-4 md:gap-8 items-start">
+                                            <div className="w-full md:basis-1/3 md:max-w-md md:order-1">
+                                                <ProjectImage />
+                                                <p className="mt-4 text-muted-foreground">{project.techStack}</p>
+                                            </div>
+                                            <div className="w-full md:basis-2/3 md:order-2">
+                                                <DrawerTitle className="text-xl font-semibold mb-4 hidden md:block">{project.name}</DrawerTitle>
+                                                <p>{project.techDetails}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="flex flex-col sm:flex-row gap-2 justify-center md:justify-end mt-2 sticky bottom-0 p-4">
+                                        <ProjectButton>{isLive ? "Open Project" : "Coming Soon"}</ProjectButton>
+                                        <DrawerClose asChild>
+                                            <Button variant="outline">Close</Button>
+                                        </DrawerClose>
+                                    </div>
+                                </div>
+                            </DrawerContent>
+                        </Drawer>
+                        <CardDescription className="text-center mt-4">{project.description}</CardDescription>
+                    </CardContent>
+                    <CardFooter className="w-full mt-4">
+                        <ProjectButton className="w-full">Open Project</ProjectButton>
+                    </CardFooter>
+                </div>
+
+                {/* Desktop Layout (Side-by-Side) */}
+                <div className="hidden lg:flex lg:flex-row w-full">
+                    {isReversed ? (
+                        <>
+                            <motion.div className="w-2/3 flex flex-col min-w-0" variants={childVariants}>
+                                <CardContent className="flex justify-center items-center flex-grow">
+                                    <p>{project.techDetails}</p>
+                                </CardContent>
+                                <CardFooter className={isReversed ? "justify-start" : "justify-end"}>
+                                    <ProjectButton>{isLive ? "View Project" : "Coming Soon"}</ProjectButton>
+                                </CardFooter>
+                            </motion.div>
+                            <motion.div className="w-1/3 flex-shrink-0" variants={childVariants}>
+                                <CardHeader className="flex flex-col items-center">
+                                    <CardTitle>{project.name}</CardTitle>
+                                    <CardDescription>{project.status}</CardDescription>
+                                    <ProjectImage className="cursor-pointer" />
+                                    <p className="mt-4 text-muted-foreground text-center">{project.techStack}</p>
+                                </CardHeader>
+                            </motion.div>
+                        </>
+                    ) : (
+                        <>
+                            <motion.div className="w-1/3 flex-shrink-0" variants={childVariants}>
+                                <CardHeader className="flex flex-col items-center">
+                                    <CardTitle>{project.name}</CardTitle>
+                                    <CardDescription>{project.status}</CardDescription>
+                                    <ProjectImage className="cursor-pointer" />
+                                    <p className="mt-4 text-muted-foreground text-center">{project.techStack}</p>
+                                </CardHeader>
+                            </motion.div>
+                            <motion.div className="w-2/3 flex flex-col min-w-0" variants={childVariants}>
+                                <CardContent className="flex justify-center items-center flex-grow">
+                                    <p>{project.techDetails}</p>
+                                </CardContent>
+                                <CardFooter className={isReversed ? "justify-start" : "justify-end"}>
+                                    <ProjectButton>{isLive ? "View Project" : "Coming Soon"}</ProjectButton>
+                                </CardFooter>
+                            </motion.div>
+                        </>
+                    )}
+                </div>
             </Card>
         </motion.div>
     );

@@ -12,7 +12,7 @@ export default function ProjectsPage() {
             <div className="min-h-screen flex flex-col">
                 <Navbar />
 
-                <main className="flex-grow w-full max-w-5xl mx-auto">
+                <main className="flex-grow w-full max-w-5xl mx-auto px-4"> {/* Added px-4 for horizontal padding */}
                     <div className="mt-40">
                         <Breadcrumb>
                             <BreadcrumbList>
@@ -28,11 +28,17 @@ export default function ProjectsPage() {
                             </BreadcrumbList>
                         </Breadcrumb>
                     </div>
-                    <p className="text-3xl font-semibold mt-4 mb-4 text-center">All Projects</p>
-                    {projects.map((project, index) => (
-                        <ProjectCard key={project.name} project={project} isReversed={index % 2 === 1} className="w-full mb-4 border border-foreground/30" />
-                    ))}
-
+                    <p className="text-3xl font-semibold mt-4 mb-8 text-center">All Projects</p> {/* Increased mb-4 to mb-8 */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-8 mb-8"> {/* Added responsive grid and gap */}
+                        {projects.map((project, index) => (
+                            <ProjectCard
+                                key={project.name}
+                                project={project}
+                                isReversed={index % 2 === 1} // Keep the reversing logic
+                                className="border-foreground/30" // Keep the border class here
+                            />
+                        ))}
+                    </div>
                 </main>
 
                 <div className="max-w-5xl mx-auto w-full">
