@@ -13,7 +13,7 @@ export default function ProjectsPage() {
                 <Navbar />
 
                 <main className="flex-grow w-full max-w-5xl mx-auto">
-                    <div className="mt-30">
+                    <div className="mt-30 ml-4">
                         <Breadcrumb>
                             <BreadcrumbList>
                                 <BreadcrumbItem>
