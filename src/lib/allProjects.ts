@@ -18,7 +18,7 @@ export const projects: Project[] = [
     description:
       "Grow yourself spiritually and get closer to God by reading the Scriptures, studying customized study plans and devotionals.",
     techStack:
-      "Stack: Next.js, TypeScript, Tailwind CSS, AWS RDS, AWS S3, APIs, Vercel",
+      "Stack: Next.js, TypeScript, Tailwind CSS, APIs, AWS RDS, S3, Vercel",
     techDetails:
       "The Bible Web App aims to make scripture accessible, intuitive, and meaningful for users worldwide, with a focus on inclusivity and user engagement. As a personal learning project, it serves to master modern web and mobile development technologies. Key goals include: Accessibility: Ensure the app is usable by all, including those with visual, auditory, or motor impairments. User Engagement: Provide features like study plans and community interaction to deepen Bible study. Scalability: Deploy a production-ready app to Vercel with a cloud database (e.g., Supabase, Neon). Mobile Expansion: Build a React Native app to extend the experience to mobile users. Personal Mission: Create a tool that supports spiritual growth, inspired by a commitment to making the Bible approachable for all.",
   },
@@ -29,7 +29,7 @@ export const projects: Project[] = [
     description:
       "Quickly find information about your Clash of Clans clan or accounts, including war stats, clan members, and more.",
     techStack:
-      "Stack: Next.js, TypeScript, Tailwind CSS, AWS RDS, AWS S3, Clash of Clans API, Docker, AWS EC2, AWS ECR",
+      "Stack: Next.js, TypeScript, Tailwind CSS, Clash of Clans API, Docker, AWS RDS, S3, EC2, ECR",
     techDetails:
       "The Clash of Clans Management Web App is designed to provide a comprehensive platform for Clash of Clans players to manage their clans and accounts efficiently. It leverages the Clash of Clans API to fetch real-time data about clans, members, and war stats. The application is built with Next.js and TypeScript, ensuring a robust and scalable architecture. Tailwind CSS is used for styling, providing a modern and responsive user interface. The backend is deployed on AWS EC2 using Docker, with data stored in AWS RDS and S3 for scalability and reliability. This app aims to enhance the gaming experience by providing players with easy access to essential information about their clans.",
   },
@@ -41,9 +41,9 @@ export const projects: Project[] = [
       "Leverage Google Gemini AI to build resumes and cover letters tailored specifically to a selected job description.",
     link: "https://resumebuilder.stevensousa.com",
     techStack:
-      "Stack: Django, Docker, Supabase, Tailwind CSS, Google Gemini API, AWS EC2, AWS ECR.",
+      "Stack: Django, Docker, Supabase, Bootstrap, Google Gemini API, AWS EC2 & ECR.",
     techDetails:
-      "Resume Builder is a full-stack web application that utilizes Django and Docker to create a robust backend service. It integrates with the Google Gemini API to generate tailored resumes and cover letters based on user-selected job descriptions and user profiles (For example: Full-Stack Developer me vs Database Engineer me). The application uses Supabase for database management, ensuring efficient data storage and retrieval. The frontend is styled with Tailwind CSS, providing a modern and responsive user interface. Deployed on AWS EC2 with Docker, the application ensures scalability and reliability, making it easy for users to create professional resumes effortlessly.",
+      "Resume Builder is a full-stack web application that utilizes Django and Docker to create a robust backend service. It integrates with the Google Gemini API to generate tailored resumes and cover letters based on user-selected job descriptions and user profiles (For example: Full-Stack Developer me vs Database Engineer me). The application uses Supabase for database management, ensuring efficient data storage and retrieval. The frontend is styled with Bootstrap, providing a modern and responsive user interface. Deployed on AWS EC2 with Docker, the application ensures scalability and reliability, making it easy for users to create professional resumes effortlessly.",
   },
   {
     name: "YelpCamp!",
@@ -53,7 +53,7 @@ export const projects: Project[] = [
       "Love campgrounds? This app allows you to find, review, and create campgrounds. Perfect for camping enthusiasts looking to explore new sites.",
     link: "https://yelpcamp.stevensousa.com",
     techStack:
-      "Stack: Node.js, Express, MongoDB Atlas, Cloudinary, EJS, Bootstrap, Passport.js",
+      "Stack: Node.js, Express, MongoDB Atlas, Cloudinary, EJS, Bootstrap",
     techDetails:
       "YelpCamp! is a full-stack web application that allows users to find, review, and create campgrounds. Built with Node.js and Express, it provides a RESTful API for campground management. MongoDB Atlas is used for data storage, while Cloudinary handles image uploads and storage. The frontend is designed with EJS and Bootstrap, ensuring a responsive and user-friendly interface. User authentication is managed with Passport.js, allowing users to create accounts, log in, and manage their campground reviews and submissions.",
   },
@@ -89,7 +89,7 @@ export const projects: Project[] = [
     link: "https://github.com/Stevensousa67/COMP390/tree/main/Assignment%201.2",
     techStack: "Stack: Python, NASA API",
     techDetails:
-      "Meteorite Landings is a data visualization terminal application that allows users to explore meteorite landing data provided by NASA. It is built with Python and utilizes the NASA API to fetch real-time data on meteorite landings around the world. Users can view detailed information about each meteorite, including its classification, fall status, and coordinates. This project serves as an educational tool for those interested in space science and meteorites.",
+      "Meteorite Landings is a data visualization terminal application that allows users to explore meteorite landing data provided by NASA. It is built with Python and utilizes a raw data file containing over 10 thousand meteorite landings around the world. Users can view detailed information about each meteorite, including its classification, fall status, and coordinates. This project serves as an educational tool for those interested in space science and meteorites.",
   },
   {
     name: "Enigma Machine",
