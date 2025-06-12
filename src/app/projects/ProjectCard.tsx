@@ -67,7 +67,7 @@ export default function ProjectCard({ project, imageSize = { width: 420, height:
             <Card className="transform transition duration-300 ease-in-out hover:-translate-y-1 hover:shadow-lg hover:border-blue-500 flex flex-col lg:flex-row">
                 {/* Mobile & Tablet Layout (Stacked Vertically) */}
                 <div className="flex flex-col items-center text-center lg:hidden">
-                    <CardHeader className="w-full mb-4">
+                    <CardHeader className="w-full mb-8">
                         <CardTitle>{project.name}</CardTitle>
                         <CardDescription>{project.status}</CardDescription>
                     </CardHeader>
