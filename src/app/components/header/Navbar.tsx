@@ -37,7 +37,7 @@ export default function Navbar() {
 
     return (
         <header>
-            <nav className={`fixed w-full top-4 z-40 max-w-5xl left-1/2 -translate-x-1/2 flex h-[60px] items-center justify-between rounded-full px-8 saturate-100 backdrop-blur-[10px] transition-colors ${scrolled ? 'bg-background/80 shadow-xs border-transparent' : 'bg-background/30 shadow-xl border border-foreground/30'} animate-in fade-in slide-in-from-top-full duration-400 ease-out fill-mode-forwards`} role="navigation">
+            <nav className={`fixed w-full top-4 z-40 max-w-5xl left-1/2 -translate-x-1/2 flex h-[60px] items-center justify-between rounded-full px-8 saturate-100 backdrop-blur-[10px] transition-colors ${scrolled ? 'bg-background/80 shadow-xs border-transparent' : 'bg-background/30 shadow-xl border border-foreground/30'} animate-in fade-in slide-in-from-top-full duration-500 ease-out fill-mode-forwards`} role="navigation">
                 
                 {/* Your Navbar content (Left side - Avatar with Skeleton, Right side - Links and Controls) */}
                 <Link href="/" className="inline-block">
