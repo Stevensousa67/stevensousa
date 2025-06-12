@@ -63,12 +63,11 @@ export default function ProjectCard({ project, imageSize = { width: 420, height:
     };
 
     return (
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.5 }} variants={cardVariants} className={`w-full ${className} flex justify-center`}
-        >
-            <Card className="transform transition duration-300 ease-in-out hover:-translate-y-1 hover:shadow-lg hover:border-blue-500 flex flex-col lg:flex-row w-80 lg:w-full">
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.5 }} variants={cardVariants} className={`w-full ${className} flex justify-center`}>
+            <Card className="transform transition duration-300 ease-in-out hover:-translate-y-1 hover:shadow-lg hover:border-blue-500 flex flex-col lg:flex-row">
                 {/* Mobile & Tablet Layout (Stacked Vertically) */}
-                <div className="flex flex-col items-center text-center p-4 lg:hidden">
-                    <CardHeader className="w-full">
+                <div className="flex flex-col items-center text-center lg:hidden">
+                    <CardHeader className="w-full mb-4">
                         <CardTitle>{project.name}</CardTitle>
                         <CardDescription>{project.status}</CardDescription>
                     </CardHeader>
@@ -105,8 +104,8 @@ export default function ProjectCard({ project, imageSize = { width: 420, height:
                         </Drawer>
                         <CardDescription className="text-center mt-4">{project.description}</CardDescription>
                     </CardContent>
-                    <CardFooter className="w-full mt-4">
-                        <ProjectButton className="w-full">Open Project</ProjectButton>
+                    <CardFooter className="w-1/4 justify-center mt-4">
+                        <ProjectButton>Open Project</ProjectButton>
                     </CardFooter>
                 </div>
 
