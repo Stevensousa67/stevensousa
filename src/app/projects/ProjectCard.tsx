@@ -57,7 +57,7 @@ export default function ProjectCard({ project, imageSize = { width: 420, height:
         visible: {
             opacity: 1,
             y: 0,
-            transition: { duration: 0.4, ease: "easeOut" },
+            transition: { duration: 0.6, ease: "easeOut" },
         },
     };
 
@@ -85,7 +85,7 @@ export default function ProjectCard({ project, imageSize = { width: 420, height:
     );
 
     return (
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={cardVariants}>
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.5 }} variants={cardVariants}>
             <Card className={`flex flex-row w-full transform transition duration-300 ease-in-out hover:-translate-y-1 hover:shadow-lg hover:border-blue-500 ${className}`}>
                 {isReversed ? (
                     <>
