@@ -12,8 +12,8 @@ export default function ProjectsPage() {
             <div className="min-h-screen flex flex-col">
                 <Navbar />
 
-                <main className="flex-grow w-full max-w-5xl mx-auto px-4"> {/* Added px-4 for horizontal padding */}
-                    <div className="mt-40">
+                <main className="flex-grow w-full max-w-5xl mx-auto">
+                    <div className="mt-30">
                         <Breadcrumb>
                             <BreadcrumbList>
                                 <BreadcrumbItem>
@@ -28,8 +28,8 @@ export default function ProjectsPage() {
                             </BreadcrumbList>
                         </Breadcrumb>
                     </div>
-                    <p className="text-3xl font-semibold mt-4 mb-8 text-center">All Projects</p> {/* Increased mb-4 to mb-8 */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-8 mb-8"> {/* Added responsive grid and gap */}
+                    <p className="text-3xl font-semibold mt-10 mb-8 text-center">All Projects</p>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-8 mb-8">
                         {projects.map((project, index) => (
                             <ProjectCard
                                 key={project.name}
