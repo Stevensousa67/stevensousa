@@ -23,7 +23,7 @@ export default function About() {
                             </div>
                             <div className="opacity-100 transform-none">React</div>
                         </h1>
-                        <div className="text-muted-foreground text-sm">Plymouth, MA, USA • UTC/GMT {timeOffset}</div>
+                        <div className="text-muted-foreground text-sm">Plymouth, MA, USA • {timeOffset}</div>
                     </div>
                     <div className="relative hidden size-40 sm:block transform-none">
                         <PictureAndSkeleton />
