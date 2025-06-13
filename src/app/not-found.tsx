@@ -25,7 +25,7 @@ export default function NotFound() {
                             </BreadcrumbItem>
                             <BreadcrumbSeparator />
                             <BreadcrumbItem>
-                                <BreadcrumbPage>Projects</BreadcrumbPage>
+                                <BreadcrumbPage>Lost in Space</BreadcrumbPage>
                             </BreadcrumbItem>
                         </BreadcrumbList>
                     </Breadcrumb>
