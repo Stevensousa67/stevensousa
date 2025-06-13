@@ -14,7 +14,7 @@ export default function NotFound() {
         <div className="min-h-screen flex flex-col">
             <Navbar />
 
-            <main className="flex-grow w-full max-w-5xl mx-auto">
+            <main className="flex-grow w-full max-w-5xl" style={{ position: 'relative', left: '50vw', transform: 'translateX(-50%)' }}>
                 <div className="mt-30 ml-4">
                     <Breadcrumb>
                         <BreadcrumbList>
