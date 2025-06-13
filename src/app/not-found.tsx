@@ -4,7 +4,6 @@ import Navbar from "@/app/components/header/Navbar";
 import Footer from "@/app/components/footer/Footer";
 import Image from "next/image";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
-import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 
@@ -34,19 +33,19 @@ export default function NotFound() {
                 <motion.p className="text-3xl font-semibold mt-20 mb-8 text-center" initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
                     404 - Houston, We Have a Problem!
                 </motion.p>
-                <AspectRatio ratio={4 / 3} className="w-full max-w-md mx-auto">
-                    <motion.div animate={{ y: [-10, 10] }} transition={{ repeat: Infinity, repeatType: "reverse", duration: 3, ease: "easeInOut" }}>
-                        <Image src={`${baseURL}Astronaut.jpg`} alt="Astronaut floating in space" className="object-cover rounded-lg" width={1920} height={1080} />
+                <div className="w-70 mx-auto aspect-[16/9] mb-8">
+                    <motion.div animate={{ y: [-5, 5] }} transition={{ repeat: Infinity, repeatType: "reverse", duration: 3, ease: "easeInOut" }}>
+                        <Image src={`${baseURL}Astronaut.jpg`} alt="Astronaut floating in space" className="object-cover rounded-lg w-full h-full" width={1920} height={1080} sizes="(max-width: 640px) 100vw, (max-width: 768px) 80vw, 50vw" priority/>
                     </motion.div>
-                </AspectRatio>
-                <motion.p className="text-lg text-muted-foreground text-center mb-8 -mt-42" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4, duration: 0.8 }}>
+                </div>
+                <motion.p className="text-lg text-muted-foreground text-center mb-6" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4, duration: 0.8 }}>
                     You&apos;ve drifted into deep space! Let&apos;s get you back to Earth.
                 </motion.p>
                 <div className="text-center">
                     <Button asChild className="hover:underline">
                         <Link href="/">Return to Earth</Link>
                     </Button>
-                </div>  
+                </div>
             </main>
             <div className="max-w-5xl mx-auto w-full">
                 <Footer />
