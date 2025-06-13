@@ -22,7 +22,7 @@ export default function ProjectsPage() {
                             </BreadcrumbItem>
                             <BreadcrumbSeparator />
                             <BreadcrumbItem>
-                                <BreadcrumbPage>Lost in Space</BreadcrumbPage>
+                                <BreadcrumbPage>Projects</BreadcrumbPage>
                             </BreadcrumbItem>
                         </BreadcrumbList>
                     </Breadcrumb>
