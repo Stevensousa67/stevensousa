@@ -1,24 +1,22 @@
 'use client';
 import React from 'react';
+import Image from 'next/image';
 import QuoteRotator from './QuoteRotator';
+import { skills } from '@/lib/skills';
+import { Badge } from '@/components/ui/badge';
 
 export default function Skills() {
   return (
     <section className="py-16 flex flex-col items-center text-center gap-8">
       <h1 className="text-3xl font-semibold">Skills</h1>
       <div className="flex flex-wrap gap-8 justify-center">
-        <div className="w-64 h-64 rounded-lg shadow-lg flex items-center justify-center border-3">
-          Skill 1
-        </div>
-        <div className="w-64 h-64 rounded-lg shadow-lg flex items-center justify-center border-3">
-          Skill 2
-        </div>
-        <div className="w-64 h-64 rounded-lg shadow-lg flex items-center justify-center border-3">
-          Skill 3
-        </div>
-        <div className="w-64 h-64 rounded-lg shadow-lg flex items-center justify-center border-3">
-          Skill 4
-        </div>
+        {skills.map((skill) => (
+          <Badge key={skill.name} variant="outline" className="flex items-center gap-3 px-2 py-1">
+            <Image src={skill.icon} alt={skill.name} width={18} height={18} className={skill.isBlack ? "invert-0 dark:invert" : ""} />
+            <span className="sr-only">{skill.name} icon</span>
+            <span className="hidden sm:inline">{skill.name}</span>
+          </Badge>
+        ))}
       </div>
       <QuoteRotator />
     </section>
