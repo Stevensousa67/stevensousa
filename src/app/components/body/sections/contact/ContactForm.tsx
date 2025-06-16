@@ -69,7 +69,7 @@ export function ContactForm() {
   }
 
   return (
-    <div className="w-full max-w-xl mx-auto p-6 rounded-lg">
+    <div className="w-full max-w-xl mx-auto rounded-lg">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           <div className="space-y-4">
@@ -119,7 +119,7 @@ export function ContactForm() {
                     <Textarea
                       placeholder="Your Message"
                       {...field}
-                      className="w-full h-40 bg-input text-foreground border-border resize-none"
+                      className="w-full h-50 bg-input text-foreground border-border resize-none"
                       disabled={isSubmitting}
                     />
                   </FormControl>
