@@ -26,15 +26,17 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gradient-to-b from-white via-white via-60% to-gray-300 dark:bg-gradient-to-b dark:from-black dark:via-black dark:via-60% dark:to-gray-800 `}>
-        <div className="min-h-screen flex flex-col">
-          <Navbar />
-          <main className="flex-grow flex flex-col max-w-5xl" style={{ position: 'relative', left: '50vw', transform: 'translateX(-50%)' }}>
-            <ThemeProvider attribute="class" defaultTheme="system">{children}</ThemeProvider>
-          </main>
-          <div className="max-w-5xl mx-auto w-full">
-            <Footer />
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <div className="min-h-screen flex flex-col">
+            <Navbar />
+            <main className="flex-grow flex flex-col max-w-5xl" style={{ position: 'relative', left: '50vw', transform: 'translateX(-50%)' }}>
+              {children}
+            </main>
+            <div className="max-w-5xl mx-auto w-full">
+              <Footer />
+            </div>
           </div>
-        </div>
+        </ThemeProvider>
         <SpeedInsights />
         <Analytics />
       </body>
