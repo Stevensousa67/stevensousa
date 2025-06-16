@@ -1,14 +1,25 @@
+"use client";
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
 
-interface AppBreadcrumbProps {
-    currentPage: string;
-    className?: string;
-}
+const validRoutes = ["/", "/about", "/projects"];
 
-export default function AppBreadcrumb({ currentPage, className }: AppBreadcrumbProps) {
+export default function AppBreadcrumb() {
+    const pathname = usePathname();
+    const is404 = !validRoutes.includes(pathname);
+
+
+    // Set page title based on pathname
+    const pageTitle = is404 ? "Lost in Space" :
+        pathname === "/" ? "" :
+            pathname.charAt(1).toUpperCase() + pathname.slice(2);
+
+    // Hide breadcrumb if pathname is "/"
+    const computedClassName = pathname === "/" ? "hidden" : "";
+
     return (
-        <div className={`mt-30 ml-4 ${className}`}>
+        <div className={`mt-30 ml-4 ${computedClassName}`.trim()}>
             <Breadcrumb>
                 <BreadcrumbList>
                     <BreadcrumbItem>
@@ -16,10 +27,14 @@ export default function AppBreadcrumb({ currentPage, className }: AppBreadcrumbP
                             <Link href="/">Home</Link>
                         </BreadcrumbLink>
                     </BreadcrumbItem>
-                    <BreadcrumbSeparator />
-                    <BreadcrumbItem>
-                        <BreadcrumbPage>{currentPage}</BreadcrumbPage>
-                    </BreadcrumbItem>
+                    {pageTitle && (
+                        <>
+                            <BreadcrumbSeparator />
+                            <BreadcrumbItem>
+                                <BreadcrumbPage>{pageTitle}</BreadcrumbPage>
+                            </BreadcrumbItem>
+                        </>
+                    )}
                 </BreadcrumbList>
             </Breadcrumb>
         </div>

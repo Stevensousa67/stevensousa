@@ -1,7 +1,6 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import AppBreadcrumb from "@/components/ui/AppBreadcrumb";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 
@@ -10,7 +9,6 @@ export default function NotFound() {
 
     return (
         <>
-            <AppBreadcrumb currentPage="Lost in Space" />
             <motion.p className="text-3xl font-semibold mt-20 mb-4 text-center" initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
                 404 - Houston, We Have a Problem!
             </motion.p>

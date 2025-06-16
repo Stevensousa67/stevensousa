@@ -6,6 +6,7 @@ import Footer from "@/app/components/footer/Footer";
 import { ThemeProvider } from "next-themes";
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from "@vercel/analytics/next"
+import AppBreadcrumb from "@/components/ui/AppBreadcrumb";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,6 +30,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Navbar />
           <main className="flex-grow flex flex-col max-w-5xl w-full mx-auto">
+            <AppBreadcrumb />
             {children}
           </main>
           <Footer />
