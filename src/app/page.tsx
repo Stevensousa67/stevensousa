@@ -6,12 +6,10 @@ import Contact from "@/app/components/body/sections/contact/Contact";
 export default function Home() {
   return (
     <>
-      <div className="flex-grow">
-        <About />
-        <Projects />
-        <Skills />
-        <Contact />
-      </div>
+      <About />
+      <Projects />
+      <Skills />
+      <Contact />
     </>
   );
 }
