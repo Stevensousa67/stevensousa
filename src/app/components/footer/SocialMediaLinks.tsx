@@ -1,4 +1,4 @@
-import { socialMedia } from './data/socialMedia';
+import { socialMedia } from '@/lib/socialMedia';
 import SocialMedia from './SocialMedia';
 
 export interface SocialMediaItem {
