@@ -8,7 +8,7 @@ interface Project {
   techDetails?: string;
 }
 
-const baseURL = process.env.NEXT_PUBLIC_AWS_S3_BASE_URL;
+const baseURL = `${process.env.NEXT_PUBLIC_AWS_S3_BASE_URL}project-thumbnails/`;
 
 export const projects: Project[] = [
   {

@@ -8,7 +8,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { ModeToggle } from '@/components/ui/modeToggle';
 
 export default function Navbar() {
-    const baseUrl = process.env.NEXT_PUBLIC_AWS_S3_BASE_URL;
+    const baseUrl = `${process.env.NEXT_PUBLIC_AWS_S3_BASE_URL}ss-pictures/`;
     const imageSrc = `${baseUrl}Logo.jpeg`;
     const [isOpen, setIsOpen] = useState(false);
     const [isClosing, setIsClosing] = useState(false);
