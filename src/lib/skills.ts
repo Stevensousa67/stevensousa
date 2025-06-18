@@ -76,12 +76,11 @@ export const skills: Skills[] = [
         icon: `${baseURL}docker.svg`,
     },
     {
+        name: "Power BI",
+        icon: `${baseURL}powerbi.svg`,
+    },
+    {
         name: "Git",
         icon: `${baseURL}git.svg`,
     },
-    {
-        name: "GitHub",
-        icon: `${baseURL}github.svg`,
-        isBlack: true,
-    }
 ];
