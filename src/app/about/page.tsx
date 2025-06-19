@@ -18,12 +18,13 @@ export default function AboutPage() {
 
     return (
         <>
-            <motion.p className="text-3xl font-semibold mt-20 mb-8 text-center" initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+            <motion.p className="text-3xl font-semibold mt-10 mb-10 text-center" initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
                 About Me
             </motion.p>
-            <div className="flex flex-col md:flex-row items-center justify-center gap-8 max-w-5xl mx-auto mb-8 px-4">
-                <motion.div className="flex-1" initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6, ease: 'easeOut' }}>
-                    <Image src={imageSrc} alt="Steven Sousa" width={250} height={250} className="rounded-2xl object-cover mx-auto"/>
+            <div className="flex flex-col md:flex-row items-center justify-center gap-2 mb-10 px-4">
+                {/* Changed flex-1 to md:flex-1 */}
+                <motion.div className="flex-1 mb-10" initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6, ease: 'easeOut' }}>
+                    <Image src={imageSrc} alt="Steven Sousa" width={250} height={250} className="rounded-2xl object-cover mx-auto" />
                 </motion.div>
                 <motion.div className="flex-1 text-center md:text-left" variants={container} initial="hidden" animate="visible">
                     {[
