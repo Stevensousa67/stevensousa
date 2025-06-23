@@ -19,13 +19,13 @@ export default function AboutMe() {
 
     return (
         <>
-            <div className="flex flex-col md:flex-row items-center justify-center gap-2 mb-10 px-4">
+            <div className="flex flex-col md:flex-row items-center justify-center gap-2 px-4">
                 <motion.div className="flex-1 mb-10" initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6, ease: 'easeOut' }}>
                     <Image src={imageSrc} alt="Steven Sousa" width={250} height={250} className="rounded-2xl object-cover mx-auto" />
                 </motion.div>
                 <motion.div className="flex-1 text-center md:text-left" variants={container} initial="hidden" animate="visible">
                     {aboutMe.map((paragraph, index) => (
-                        <motion.p key={index} className="text-lg mb-4" variants={item}>{paragraph.paragraph}</motion.p>
+                        <motion.p key={index} className="text-md mb-4" variants={item}>{paragraph.paragraph}</motion.p>
                     ))}
                 </motion.div>
             </div>
