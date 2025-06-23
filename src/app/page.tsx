@@ -10,13 +10,13 @@ export default function Home() {
       <AnimatedSection animation="fade-in-up" duration="duration-700">
         <About />
       </AnimatedSection>
-      <AnimatedSection animation="fade-in-left" duration="duration-1000">
+      <AnimatedSection animation="fade-in-left" duration="duration-700" delay="delay-200">
         <Projects />
       </AnimatedSection>
-      <AnimatedSection animation="fade-in-right" duration="duration-500" delay="delay-200">
+      <AnimatedSection animation="fade-in-right" duration="duration-700">
         <Skills />
       </AnimatedSection>
-      <AnimatedSection animation="fade-in-up" duration="duration-300">
+      <AnimatedSection animation="fade-in-up" duration="duration-700">
         <Contact />
       </AnimatedSection>
     </>
