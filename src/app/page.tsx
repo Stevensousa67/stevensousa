@@ -1,8 +1,8 @@
-import About from "@/app/components/body/sections/about/About";
-import Projects from "@/app/components/body/sections/projects/Projects";
-import Skills from "@/app/components/body/sections/skills/Skills";
-import Contact from "@/app/components/body/sections/contact/Contact";
-import AnimatedSection from "@/app/components/AnimatedSection";
+import About from "@/components/sections/about/About";
+import Projects from "@/components/sections/projects/Projects";
+import Skills from "@/components/sections/skills/Skills";
+import Contact from "@/components/sections/contact/Contact";
+import AnimatedSection from "@/components/AnimatedSection";
 
 export default function Home() {
   return (
