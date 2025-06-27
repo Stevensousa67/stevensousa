@@ -6,6 +6,7 @@ import Footer from "@/app/components/footer/Footer";
 import { ThemeProvider } from "next-themes";
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from "@vercel/analytics/next"
+import { Toaster } from "@/components/ui/sonner";
 import AppBreadcrumb from "@/components/ui/AppBreadcrumb";
 
 const geistSans = Geist({
@@ -34,6 +35,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             {children}
           </main>
           <Footer />
+          <Toaster  />
         </ThemeProvider>
         <SpeedInsights />
         <Analytics />

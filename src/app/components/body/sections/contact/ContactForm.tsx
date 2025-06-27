@@ -7,7 +7,6 @@ import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from "
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { Toaster } from "@/components/ui/sonner";
 import { toast } from "sonner"
 
 
@@ -135,7 +134,6 @@ export function ContactForm() {
           </Button>
         </form>
       </Form>
-      <Toaster />
     </div>
   );
 }
