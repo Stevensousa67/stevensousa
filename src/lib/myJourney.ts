@@ -13,10 +13,10 @@ const baseURL  = `${process.env.NEXT_PUBLIC_AWS_S3_BASE_URL}svgs/myJourney/`;
 export const myJourney: Accomplishments[] = [
   {
     type: "work",
-    date: "June 2025 - Present",
+    date: "July 2025 - Present",
     title: "Full-Stack Software Engineer",
-    company: "Endor_phinaX",
-    description: "Leading the development of the company's e-commerce site, implementing features like shopping cart, user authentication, and various payment integrations such as Stripe, Apple Pay, and Google Pay.",
+    company: "EndorphinaX",
+    description: "● Sole full-stack developer building a scalable e-commerce platform using Next.js, TypeScript, Tailwind CSS, and Shadcn. \n● Implementing core features including secure shopping cart, Firebase authentication & storage, and payment integrations (Stripe, Apple Pay, Google Pay), \n● Designing and optimizing PostgreSQL database with GraphQL via Firebase Data Connect for high performance and scalability. \nDeploying and managing application infrastructure on Vercel for seamless delivery.",
     icon: `${baseURL}work.svg`,
     isBlack: true,
   },
@@ -24,7 +24,7 @@ export const myJourney: Accomplishments[] = [
     type: "work",
     date: "Aug 2022 - Present",
     title: "Business Intelligence Developer",
-    company: "Tech Etch",
+    company: "Tech Etch Inc.",
     description: "● Drove a $3.4M annual revenue increase by engineering a Power BI visibility report that provided critical operational insights, enabling early job delivery.\n● Enhanced profitability by creating a Power BI report that analyzed key metrics for all internal part numbers, identifying over 147 opportunities for cost and efficiency optimizations.\n● Architected and launched a centralized, responsive Power BI reporting hub, overcoming default portal limitations to streamline report discovery and significantly boost data accessibility for stakeholders across the organization.\n● Optimized operational efficiency by automating a critical daily reporting process with Power BI, eliminating 31 hours of manual work annually.\n● Acted as a key liaison between technical and business units, translating complex requirements from diverse stakeholders—from operations to the executive team—into intuitive Power BI dashboards and actionable solutions.",
     icon: `${baseURL}work.svg`,
     isBlack: true,
